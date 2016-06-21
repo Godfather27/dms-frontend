@@ -1,0 +1,335 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300);
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   */
+
+   html, body, div, span, applet, object, iframe,
+   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+   a, abbr, acronym, address, big, cite, code,
+   del, dfn, em, img, ins, kbd, q, s, samp,
+   small, strike, strong, sub, sup, tt, var,
+   b, u, i, center,
+   dl, dt, dd, ol, ul, li,
+   fieldset, form, label, legend,
+   table, caption, tbody, tfoot, thead, tr, th, td,
+   article, aside, canvas, details, embed, 
+   figure, figcaption, footer, header, hgroup, 
+   menu, nav, output, ruby, section, summary,
+   time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+/*
+  STYLE
+  */
+  html, body, header {
+    height: 100%;
+  }
+
+  body {
+    font-family: Roboto;
+    background-color: #F8F8F8;
+    font-size: 14px;
+    line-height: 1.5em;
+  }
+
+  p {
+    margin-bottom: 1em;
+    font-weight: 300;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  header {
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #95989A;
+    display: flex;
+    align-items: center;
+  }
+
+  header.column{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @keyframes transition-to-results {
+    from {
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    to {
+      flex-direction: row;
+      height: 0%;
+    }
+  }
+  @keyframes transition-to-results-img {
+    from {
+      height: 75px;
+    }
+    to {
+      height: 45px;
+    }
+  }
+
+  header.result-mode {
+    animation-name: transition-to-results;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    justify-content: flex-start;
+    min-height: 45px;
+  }
+  header.result-mode > img {
+    animation-name: transition-to-results-img;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  header > img {
+    height: 75px;
+    margin-left: 10px;
+  }
+
+  header .button-group {
+    height: 25px;
+    margin-left: 20px;
+    margin-top: 17px;
+    border: 1px solid #818181;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 675px) {
+    header {
+      flex-direction: column;
+    }
+    header .button-group{
+      margin-left: 0;
+    }
+    .button-group > *{
+      width: initial;
+    }
+  }
+  .button-group button {
+    float: left;
+  }
+
+  .button-group button:nth-child(2) img {
+    height: 100%;
+  }
+
+  .button-group button:nth-child(2):active{
+    background: transparent;
+  }
+  .button-group button:nth-child(2):active{
+    opacity: 0.5;
+  }
+
+  header input {
+    border: none;
+    padding: 5px;
+    width: 340px;
+    height: 25px;
+    box-sizing: border-box;
+    float: left;
+    outline: none;
+  }
+  
+  header button {
+    border: none;
+    padding: 3px;
+    height: 25px;
+    width: 45px;
+    outline: none;
+    background: transparent;
+  }
+
+  header button:nth-child(3) {
+    background-color: #7ABC21;
+  }
+
+  header button:active {
+    background-color: #95dc38;
+  }
+
+  @keyframes show-filters {
+    0% {
+      top: -48px;
+    }
+    50% {
+      top: -48px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+  #filters {
+    z-index: -1;
+    position: relative;
+    top: -48px;
+    display: flex;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #95989A;
+  }
+
+  #filters.show {
+    animation-name: show-filters;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  #filters > button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #95989A;
+    margin-right: 10px;
+  }
+
+  #filters > button:first-child {
+    background: red;
+  }
+  #filters > button:nth-child(2) {
+    background: green;
+  }
+  #filters > button:nth-child(3) {
+    background: blue;
+  }
+
+  @keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0.2;}
+  }
+
+  .smooth{
+    animation-name: fade;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+
+  .female{
+    border: 1px solid rgba(255,0,0,.2);
+  }
+
+  .male{
+    border: 1px solid rgba(0,125,255,.2);
+  }
+
+  .ws{
+    border: 1px solid rgba(0,0,0,.2);
+  }
+
+  .female:hover{
+    outline: 4px solid rgba(255,0,0,.2);
+  }
+
+  .male:hover{
+    outline: 4px solid rgba(0,125,255,.2);
+  }
+
+  .ws:hover{
+    outline: 4px solid rgba(0,0,0,.2);
+  }
+
+  .results{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .results:after {
+  content: "";
+  flex: auto;
+}
+
+  .results > div {
+    width: 100%;
+  }
+
+  @media (min-width: 450px) {
+    .results > div {
+      margin: 4px;
+      height: 150px;
+      width: initial;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .results > div {
+      margin: 4px;
+    }
+  }
+
+  .results img {
+    height: 100%;
+  }
+
+
+  .content {
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .results {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .results {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .results {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .results {
+      width: 1170px;
+    }
+  }
+
+  h3 {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
