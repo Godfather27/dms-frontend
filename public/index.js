@@ -23,6 +23,8 @@ $('#search').keyup(function(e) {
 
 function search() {
   // SEARCH INVOCATION CODE GOES IN HERE
+  //http://www.cp.jku.at/misc/div-2014/devset/img/acropolis_athens/2951950136.jpg
+  // GET JSON FROM /q/:query
   let data = {
     docs: [{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'}]
   }
