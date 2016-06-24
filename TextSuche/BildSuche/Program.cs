@@ -25,26 +25,14 @@ namespace QueryImage
 					Index ();
 				}
 
-				if(
+				if (args [0] == "file") {
+					loadImageFromDisk (args [1]);
+				}
 			}
 
 			if (args.Length == 1) {
-				praseInputToDouble (args [1]);
-				//loadImageFromDisk(args[1]);
+				praseInputToDouble (args [0]);
 			}
-
-			if(
-
-			//index erstellen
-
-			//index mit einem Vector vergleichen
-
-			//string to double converter
-
-			//file upload
-
-			//
-
 			//ImageFeatures ();
 			//createBoW();
 			//CreateVectorAndAppendToFile("/home/konrad/Downloads/div-2014/devset/img/acropolis_athens/132872354.jpg");
@@ -53,13 +41,17 @@ namespace QueryImage
 			/*get10bestResultsforVector(new double[6] {
 				53,554,8,15,26,2
 			});*/
-			Index ();
-			
 		}
 
 		public static void praseInputToDouble(string doubleString) {
 			string[] vecStr = doubleString.Split(',');
-			double[] vec = double[6]
+			double[] vec = new double[vecStr.Length];
+
+			for (int i = 0; i < vecStr.Length; i++) {
+				vec [i] = Double.Parse(vecStr[i]);
+			}
+
+			get10bestResultsforVector (vec);
 		}
 
 		public static void loadImageFromDisk(string input_file) {
@@ -71,7 +63,8 @@ namespace QueryImage
 
 
 		public static void Index() {
-			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory+"/img", "*.jpg", SearchOption.AllDirectories);
+			Console.WriteLine (Directory.GetCurrentDirectory());
+			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() +"/img", "*.jpg", SearchOption.AllDirectories);
 			for (int i = 0; i < files.Length; i++) {
 				CreateVectorAndAppendToFile (files [i]);
 			}
@@ -152,58 +145,7 @@ namespace QueryImage
 			for (int i = 0; i < max; i++) {
 				output[i] = results[i].Item2;
 			}
-
-
 			Console.Out.WriteLine (JsonConvert.SerializeObject (output));
-
-		}
-
-		private static void ImageFeatures ()
-		{
-			Dictionary<string, Bitmap> testImages = new Dictionary<string, Bitmap>();
-
-			//testImages.Add("img_acropolis", (Bitmap)Bitmap.FromFile("test_imgs/acropolis_athens.jpg"));
-			testImages.Add("img_cathedral", (Bitmap)Bitmap.FromFile("test_imgs/amiens_cathedral.jpg"));
-			testImages.Add("img_bigben", (Bitmap)Bitmap.FromFile("test_imgs/big_ben.jpg"));
-
-			int numberOfWords = 6; // number of cluster centers: typically >>100
-
-			// Create a Binary-Split clustering algorithm
-			BinarySplit binarySplit = new BinarySplit(numberOfWords);
-
-			IBagOfWords<Bitmap> bow;
-			// Create bag-of-words (BoW) with the given algorithm
-			BagOfVisualWords surfBow = new BagOfVisualWords(binarySplit);
-
-			// Compute the BoW codebook using training images only
-			Bitmap[] bmps = new Bitmap[testImages.Count];
-			testImages.Values.CopyTo(bmps, 0);
-			surfBow.Compute(bmps);
-			bow	 = surfBow; 	// this model needs to be saved once it is calculated: only compute it once to calculate features 
-			// from the collection as well as for new queries.
-			// THE SAME TRAINED MODEL MUST BE USED TO GET THE SAME FEATURES!!!
-
-			Dictionary<string, double[]> testImageFeatures = new Dictionary<string, double[]>();
-
-			// Extract features for all images
-			foreach (string imagename in testImages.Keys)
-			{
-				Console.WriteLine ("easy");
-				double[] featureVector = bow.GetFeatureVector(testImages[imagename]);
-				Console.WriteLine ("oder");
-				testImageFeatures.Add (imagename, featureVector);
-				Console.WriteLine ("nicht?");
-				Console.Out.WriteLine (imagename + " features: " + featureVector.ToString(DefaultArrayFormatProvider.InvariantCulture));
-			}
-			// Calculate Image Similarities
-			string[] imagenames = new string[testImageFeatures.Keys.Count];
-			testImageFeatures.Keys.CopyTo(imagenames, 0);
-			for (int i = 0; i < imagenames.Length; i++) {
-				for (int j = i + 1; j < imagenames.Length; j++) {
-					double dist = Distance.Cosine (testImageFeatures[imagenames[i]], testImageFeatures[imagenames[j]]);
-					Console.Out.WriteLine (imagenames[i] + " <-> " + imagenames[j] + " distance: " + dist.ToString());
-				}
-			}
 		}
 	}
 }
