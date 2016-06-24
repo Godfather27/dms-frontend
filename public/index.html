@@ -11,7 +11,15 @@
 </head>
 <body>
   <header class="column">
-    <img src="img/logo.svg"> <div class="button-group"><input type="text" name="search" id="search" autofocus><button><img src="/img/camera.svg"></button><button><img src="/img/search_icon.png"></button></div>
+    <img src="img/logo.svg"> <div class="button-group"><input type="text" name="search" id="search" autofocus/></div><button><img src="/img/search_icon.png"></button>
+    <div id="upload-file-container"><form id="uploadForm"
+         enctype="multipart/form-data"
+         action="/upload"
+         method="post">
+         <input type="file" name="photo" />
+        <input type="submit" value="Upload Image" name="submit">
+        </form>
+         </div>
   </header>
   <div id="filters">
     <button></button>
@@ -30,5 +38,6 @@
   </script>
 </div>
 <script src="index.js"></script>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 </body>
 </html>

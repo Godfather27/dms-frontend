@@ -10,6 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "livereload": "^0.4.1",
+    "multer": "^1.1.0"
   }
 }
