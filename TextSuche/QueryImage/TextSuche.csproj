@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,26 +32,26 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Accord">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.dll</HintPath>
+      <HintPath>..\..\Accord.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Imaging">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Imaging.dll</HintPath>
+      <HintPath>..\..\Accord.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="Accord.MachineLearning">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.MachineLearning.dll</HintPath>
+      <HintPath>..\..\Accord.MachineLearning.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Math">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Math.dll</HintPath>
+      <HintPath>..\..\Accord.Math.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Statistics">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Statistics.dll</HintPath>
+      <HintPath>..\..\Accord.Statistics.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Lucene.Net.dll</HintPath>
+      <HintPath>..\..\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />

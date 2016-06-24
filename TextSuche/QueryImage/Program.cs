@@ -34,7 +34,7 @@ namespace QueryImage
 
 		public static void Main (string[] args)
 		{
-			if (args.Length == 2) {
+			if (args.Length == 0) {
 				Index ();
 			}
 
@@ -45,7 +45,7 @@ namespace QueryImage
 
 		private static void Index ()
 		{
-			string[] files = Directory.GetFiles ("/home/konrad/dev/dms/xml");
+			string[] files = Directory.GetFiles ("X:\\MMT\\4. Semester\\Allgemein\\Digital Media Systems\\div-2014\\devset\\xml");
 			try {
 				using (var writer = new IndexWriter (FSDirectory.Open (INDEX_DIR), new StandardAnalyzer (Version.LUCENE_30), true, IndexWriter.MaxFieldLength.LIMITED)) {
 					for (int i = 0; i < files.Length; i++) {
@@ -58,11 +58,13 @@ namespace QueryImage
 									if (xmlReader.HasAttributes) {
 										string description = xmlReader.GetAttribute ("description");
 										string id = xmlReader.GetAttribute ("id");
+                                        string url = xmlReader.GetAttribute("url_b");
 										doc = new Document ();
 										doc.Add (new Field ("name", id, Field.Store.YES, Field.Index.NO));
 										doc.Add (new Field ("location", location, Field.Store.YES, Field.Index.NO));
 										doc.Add (new Field ("content", description, Field.Store.YES, Field.Index.ANALYZED));
-										writer.AddDocument (doc);
+                                        doc.Add(new Field("url_b", url, Field.Store.YES, Field.Index.ANALYZED));
+                                        writer.AddDocument (doc);
 									}
 								}
 							}
@@ -100,9 +102,9 @@ namespace QueryImage
 				ScoreDoc[] docarray = topDocs.ScoreDocs;
 
 				for (int i = 0; i < docarray.Length; i++) {
-					
-					results [i] = searcher.Doc (docarray [i].Doc).GetField ("location").StringValue +  "/" + searcher.Doc (docarray [i].Doc).GetField ("name").StringValue + ".jpg";
-				}
+                    results[i] = searcher.Doc(docarray[i].Doc).GetField("url_b").StringValue;
+                    //results [i] = searcher.Doc (docarray [i].Doc).GetField ("location").StringValue +  "/" + searcher.Doc (docarray [i].Doc).GetField ("name").StringValue + ".jpg";
+                }
 
 				Console.Out.WriteLine (JsonConvert.SerializeObject (results));
 			} catch (IOException e) {
