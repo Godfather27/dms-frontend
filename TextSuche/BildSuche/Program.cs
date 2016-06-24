@@ -59,8 +59,8 @@ namespace QueryImage
 
 		public static void loadImageFromDisk(string input_file) {
 			BagOfVisualWords bow = BagOfVisualWords.Load ("bagOfWords");
-
-			double[] featureVector = bow.GetFeatureVector((Bitmap)Bitmap.FromFile(input_file));
+			string file = Directory.GetCurrentDirectory () + "/" + input_file;
+			double[] featureVector = bow.GetFeatureVector((Bitmap)Bitmap.FromFile(file));
 			get10bestResultsforVector (featureVector);
 		}
 
