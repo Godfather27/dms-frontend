@@ -333,3 +333,10 @@
     font-weight: 700;
     font-size: 1.5em;
   }
+  
+ #upload-file-container{
+    background-image: url("img/camera.svg");
+    height:30px;
+    width:30px;
+  }
+
