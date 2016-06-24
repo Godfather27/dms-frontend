@@ -40,7 +40,7 @@ app.get('/p/:id', function(req, res, next) {
 	//bsp: 163,215,57,19,37,24
 	var vector = "163,215,57,19,37,24";
 
-	exec(`mono Bildersuche.exe vector`, (error, stdout, stderr) => {
+	exec(`mono BildSuche.exe vector`, (error, stdout, stderr) => {
 	  if (error) {
 		res.send(`error ${error}`);
 	    return;
@@ -50,16 +50,19 @@ app.get('/p/:id', function(req, res, next) {
 })
 
 app.post('/upload',function(req,res){
+	
     upload(req,res,function(err) {
         if(err) {
             return res.end("Error uploading file.");
         }
 
-	exec(`mono Bildersuche.exe file res.req.file.path`, (error, stdout, stderr) => {
+	exec(`mono BildSuche.exe file ${res.req.file.path}`, (error, stdout, stderr) => {
 	  if (error) {
+		console.log(error)
 		res.send(`error ${error}`);
 	    return;
 	  }
+		console.log(stdout);
 		res.send(stdout);
 	});;
     });
