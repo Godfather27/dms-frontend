@@ -57,13 +57,13 @@ function transitionToResult() {
 }
 
 $('#uploadForm').on('submit', function() {
+   if(!$('#choose-file').val()) return false;
     $(this).ajaxSubmit({
         error: function(xhr) {
             status('Error: ' + xhr.status);
         },
         success: function(response) {
             console.log("success");
-            console.log(response)
         }
     });
     //Very important line, it disable the page refresh.

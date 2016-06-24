@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#7ABC21">
-  <meta charset="UTF-8">
-  <title>Personen Suche</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="column">
-    <img src="img/logo.svg"> <div class="button-group"><input type="text" name="search" id="search" autofocus/></div><button><img src="/img/search_icon.png"></button>
-    <div id="upload-file-container"><form id="uploadForm"
-         enctype="multipart/form-data"
-         action="/upload"
-         method="post">
-         <input type="file" name="photo" />
-        <input type="submit" value="Upload Image" name="submit">
-        </form>
-         </div>
-  </header>
-  <div id="filters">
-    <button></button>
-    <button></button>
-    <button></button>
-  </div>
-  <div id="wrapper">
-    <script id="some-template" type="text/x-handlebars-template"> 
-     <div class="results" id="results">    
+    <head>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+        <meta content="#7ABC21" name="theme-color">
+            <meta charset="utf-8">
+                <title>
+                    Personen Suche
+                </title>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js">
+                </script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js">
+                </script>
+                <link href="style.css" rel="stylesheet">
+                </link>
+            </meta>
+        </meta>
+    </head>
+    <body>
+        <header class="column">
+            <img src="img/logo.svg">
+                <div class="button-group">
+                    <input autofocus="" id="search" name="search" type="text"/>
+                    <button>
+                        <img src="/img/search_icon.png"/>
+                    </button>
+                    
+                </div>
+                
+                    <form action="/upload" enctype="multipart/form-data" id="uploadForm" method="post" name="uploadForm">
+                     <div id="upload-file-container">
+                        <input id="choose-file" name="photo" type="file"/>
+                      </div>
+                        <input name="submit" type="submit" value="Upload Image">
+                        </input>
+                    </form>
+                
+            </img>
+        </header>
+        <div id="filters">
+            <button>
+            </button>
+            <button>
+            </button>
+            <button>
+            </button>
+        </div>
+        <div id="wrapper">
+            <script id="some-template" type="text/x-handlebars-template">
+                <div class="results" id="results">    
       {{#docs}}
       <div>
         {{img url_b}}
       </div>
       {{/docs}}
     </div>
-  </script>
-</div>
-<script src="index.js"></script>
- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-</body>
+            </script>
+        </div>
+        <script src="index.js">
+        </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js">
+        </script>
+    </body>
 </html>
