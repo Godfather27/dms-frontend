@@ -41,6 +41,7 @@ function search(query) {
     for (let index in res) {
       if (res[index] != "null"){
         buff.push({ url_b: res[index] })
+        console.log(typeof res[index])
       }
     }
     return { docs: buff }
