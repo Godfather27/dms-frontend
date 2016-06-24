@@ -6,31 +6,47 @@ var template = Handlebars.compile(source);
 Handlebars.registerHelper('img', function(name){
   const width = Math.max(Math.floor(Math.random()*500),100);
   const height = Math.max(Math.floor(Math.random()*500),100);
-  const html = `<img src="http://dummyimage.com/${width}x${height}">`;
+  const html = `<img src="${name}">`;
   return new Handlebars.SafeString(html);
 });
 
 $('.button-group button').click(function () {
-  search();
+  search($('#search').val());
 });
 
 $('#search').keyup(function(e) {
   if(e.which === 13) {
-    search();
+    search($('#search').val());
   }
 });
 
 
-function search() {
+function search(query) {
   // SEARCH INVOCATION CODE GOES IN HERE
   //http://www.cp.jku.at/misc/div-2014/devset/img/acropolis_athens/2951950136.jpg
   // GET JSON FROM /q/:query
-  let data = {
-    docs: [{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'},{img: 'http://lorempixel.com/400/200'}]
-  }
+  $.ajax({
+    url: `http://localhost:3000/q/${query}`,
+    success: function(res){
+      renderResult(parse(res));
+      transitionToResult();
+    }
+  });
 
-  renderResult(data);
-  transitionToResult();
+  
+}
+
+function parse(res){
+  res = res.replace(/\[/g,'');
+  res = res.replace(/\]/g,'');
+  res = res.replace(/\"/g,'');
+  res = res.split(",")
+  let buff = []
+  for(let index in res){
+    if(res[index] != "null")
+      buff.push({url_b: res[index]})
+  }
+  return {docs: buff}
 }
 
 function renderResult(data){

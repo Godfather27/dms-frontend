@@ -257,4 +257,5 @@ paket-files/
 .idea/
 *.sln.iml
 
-img
+/img/*
+/xml/*
