@@ -40,10 +40,24 @@ app.get('/q/:id', function(req, res, next) {
 
 app.get('/p/:id', function(req, res, next) {
 	//bsp: 163,215,57,19,37,24
-	var vector = getVector(req.params.id);
+	getVector(req.params.id, res);
+	
+})
 
-	console.log(vector);
+function getVector(id, res) {
+  fs.readFile('bow.txt', 'utf8', function(err, data){
+    if (err) throw err;
+    let buff = data.split(/\r?\n/)
+    for(let line of buff){
+      if(line.indexOf(id) > -1){
+        serviceCall(res, line.substring(line.indexOf(id)+id.length+1,line.length));
+	return;
+      }
+    }
+  });
+}
 
+function serviceCall(res, vector){
 	exec(`mono BildSuche.exe ${vector}`, (error, stdout, stderr) => {
 	  if (error) {
 		console.log(error);
@@ -52,18 +66,6 @@ app.get('/p/:id', function(req, res, next) {
 	  }
 		res.send(stdout);
 	});
-})
-
-function getVector(id) {
-  fs.readFile('bow.txt', 'utf8', (err, data) => {
-    if (err) throw err;
-    let buff = data.split(/\r?\n/)
-    for(let line of buff){
-      if(line.indexOf(id) > -1){
-        return line.substring(line.indexOf(id)+id.length+1,line.length)
-      }
-    }
-  });
 }
 
 app.post('/upload',function(req,res){
