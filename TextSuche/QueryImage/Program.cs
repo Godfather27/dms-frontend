@@ -37,7 +37,7 @@ namespace QueryImage
 
 		private static void Index ()
 		{
-			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() + "xml/");
+			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() + "/xml/");
 			try {
 				using (var writer = new IndexWriter (FSDirectory.Open (INDEX_DIR), new StandardAnalyzer (Version.LUCENE_30), true, IndexWriter.MaxFieldLength.LIMITED)) {
 					for (int i = 0; i < files.Length; i++) {
