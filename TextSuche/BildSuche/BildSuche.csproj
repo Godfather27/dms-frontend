@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{3263A218-F654-4F77-AE2A-6188CB367D95}</ProjectGuid>
+    <ProjectGuid>{C5F75876-1B69-42DC-846F-6546340F19D2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>QueryImage</RootNamespace>
-    <AssemblyName>QueryImage</AssemblyName>
+    <RootNamespace>BildSuche</RootNamespace>
+    <AssemblyName>BildSuche</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -31,27 +31,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Accord.Imaging">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Imaging.dll</HintPath>
-    </Reference>
-    <Reference Include="Accord.MachineLearning">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.MachineLearning.dll</HintPath>
+    <Reference Include="Accord">
+      <HintPath>..\packages\Accord.3.0.2\lib\net45\Accord.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Math">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Math.dll</HintPath>
+      <HintPath>..\packages\Accord.Math.3.0.2\lib\net45\Accord.Math.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Statistics">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Accord.Statistics.dll</HintPath>
+      <HintPath>..\packages\Accord.Statistics.3.0.2\lib\net45\Accord.Statistics.dll</HintPath>
     </Reference>
-    <Reference Include="Lucene.Net">
-      <HintPath>..\..\..\..\peter\teaching\FHS - 2016 SS Digital Media Systems\libs\dll-essentials\Lucene.Net.dll</HintPath>
+    <Reference Include="Accord.MachineLearning">
+      <HintPath>..\packages\Accord.MachineLearning.3.0.2\lib\net45\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.IO">
+      <HintPath>..\packages\Accord.IO.3.0.2\lib\net45\Accord.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Imaging">
+      <HintPath>..\packages\Accord.Imaging.3.0.2\lib\net45\Accord.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="SearchResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.0.2\build\Accord.targets" Condition="Exists('..\packages\Accord.3.0.2\build\Accord.targets')" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
