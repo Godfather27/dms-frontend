@@ -21,30 +21,19 @@
             <img src="img/logo.svg">
                 <div class="button-group">
                     <input autofocus="" id="search" name="search" type="text"/>
-                    <button>
-                        <img src="/img/search_icon.png"/>
-                    </button>
-                    
-                </div>
-                
                     <form action="/upload" enctype="multipart/form-data" id="uploadForm" method="post" name="uploadForm">
                      <div id="upload-file-container">
-                        <input id="choose-file" name="photo" type="file"/>
+                        <input id="choose-file" name="photo" onChange='$("#uploadForm").submit()' type="file"/>
                       </div>
                         <input name="submit" type="submit" value="Upload Image">
                         </input>
                     </form>
-                
-            </img>
+                    <button>
+                        <img src="/img/search_icon.png"/>
+                    </button>
+                    
+                </div>                
         </header>
-        <div id="filters">
-            <button>
-            </button>
-            <button>
-            </button>
-            <button>
-            </button>
-        </div>
         <div id="wrapper">
             <script id="some-template" type="text/x-handlebars-template">
                 <div class="results" id="results">    

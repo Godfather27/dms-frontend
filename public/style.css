@@ -145,6 +145,7 @@
   }
   .button-group button {
     float: left;
+    background-color: #7abc21;
   }
 
   .button-group button:nth-child(2) img {
@@ -336,10 +337,17 @@
 
  #upload-file-container{
     background-image: url("img/camera.svg");
-    height:30px;
-    width:30px;
+    height: 20px;
+  margin-top: 2px;
     background-size:contain;
-    background-repeat:none;
+    background-repeat:no-repeat;
+  }
+
+  form {
+      height: 100%;
+  float: left;
+  width: 34px;
+  padding-left: 5px;
   }
 
  #choose-file {
@@ -350,7 +358,7 @@
   }
 
 input[type=submit]{
-  background-color:limegreen;
-  border:0;
-  height:25px;
+    background: none;
+  border: none;
+  opacity: 0;
 }
