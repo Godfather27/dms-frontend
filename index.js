@@ -16,7 +16,7 @@ app.use('/', express.static('public'));
 
 app.get('/q/:id', function(req, res, next) {
 
-	exec(`text.exe ${req.params.id}`, (error, stdout, stderr) => {
+	exec(`mono text.exe ${req.params.id}`, (error, stdout, stderr) => {
 	  if (error) {
 		res.send(`error ${error}`);
 	    return;
