@@ -7,7 +7,7 @@ Handlebars.registerHelper('img', function(name) {
   let buff = name.replace(/\.jpg/,'')
   buff = buff.split('/')
   const id = buff[1]
-  const html = `<img src="http://www.cp.jku.at/misc/div-2014/devset/img/${name}" onClick="compare(${id})">`;
+  const html = `<img src="http://www.cp.jku.at/misc/div-2014/devset/img/${name}" onClick="compare(${id})" onerror="this.style.display='none'">`;
   return new Handlebars.SafeString(html);
 });
 $('.button-group button').click(function() {
