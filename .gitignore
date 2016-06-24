@@ -260,9 +260,5 @@ paket-files/
 /img/*
 /xml/*
 
-/uploads/*.png
-/uploads/*.jpg
-/uploads/*.PNG
-/uploads/*.JPG
-/uploads/*.svg
-/uploads/*.SVG
+uploads/*
+!uploads/.gitkeep

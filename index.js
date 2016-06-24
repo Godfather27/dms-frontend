@@ -27,7 +27,7 @@ app.use('/', express.static('public'));
 
 app.get('/q/:id', function(req, res, next) {
 
-	exec(`mono text.exe ${req.params.id}`, (error, stdout, stderr) => {
+	exec(`text.exe ${req.params.id}`, (error, stdout, stderr) => {
 	  if (error) {
 		res.send(`error ${error}`);
 	    return;
@@ -40,7 +40,7 @@ app.post('/upload',function(req,res){
     upload(req,res,function(err) {
     	
         if(err) {
-
+        	console.log("wtf")
             return res.end("Error uploading file.");
         }
         console.log(res.req.file.path) // IS PATH OF UPLOADED IMAGE
