@@ -73,8 +73,9 @@ $('#uploadForm').on('submit', function() {
         error: function(xhr) {
             status('Error: ' + xhr.status);
         },
-        success: function(response) {
-            console.log("success");
+        success: function(res) {
+          renderResult(parse(res));
+         transitionToResult();
         }
     });
     //Very important line, it disable the page refresh.
