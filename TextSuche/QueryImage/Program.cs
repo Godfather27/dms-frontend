@@ -37,7 +37,7 @@ namespace QueryImage
 
 		private static void Index ()
 		{
-			string[] files = Directory.GetFiles ("X:\\MMT\\4. Semester\\Allgemein\\Digital Media Systems\\div-2014\\devset\\xml");
+			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() + "xml/");
 			try {
 				using (var writer = new IndexWriter (FSDirectory.Open (INDEX_DIR), new StandardAnalyzer (Version.LUCENE_30), true, IndexWriter.MaxFieldLength.LIMITED)) {
 					for (int i = 0; i < files.Length; i++) {
@@ -94,8 +94,8 @@ namespace QueryImage
 				ScoreDoc[] docarray = topDocs.ScoreDocs;
 
 				for (int i = 0; i < docarray.Length; i++) {
-                    results[i] = searcher.Doc(docarray[i].Doc).GetField("url_b").StringValue;
-                    //results [i] = searcher.Doc (docarray [i].Doc).GetField ("location").StringValue +  "/" + searcher.Doc (docarray [i].Doc).GetField ("name").StringValue + ".jpg";
+                    //results[i] = searcher.Doc(docarray[i].Doc).GetField("url_b").StringValue;
+                    results [i] = searcher.Doc (docarray [i].Doc).GetField ("location").StringValue +  "/" + searcher.Doc (docarray [i].Doc).GetField ("name").StringValue + ".jpg";
                 }
 
 				Console.Out.WriteLine (JsonConvert.SerializeObject (results));

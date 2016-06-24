@@ -21,12 +21,19 @@ namespace QueryImage
 		public static void Main (string[] args)
 		{
 			if (args.Length == 2) {
-				Index ();
+				if (args [0] == "index") {
+					Index ();
+				}
+
+				if(
 			}
 
 			if (args.Length == 1) {
-				loadImageFromDisk(args[1]);
+				praseInputToDouble (args [1]);
+				//loadImageFromDisk(args[1]);
 			}
+
+			if(
 
 			//index erstellen
 
@@ -50,6 +57,11 @@ namespace QueryImage
 			
 		}
 
+		public static void praseInputToDouble(string doubleString) {
+			string[] vecStr = doubleString.Split(',');
+			double[] vec = double[6]
+		}
+
 		public static void loadImageFromDisk(string input_file) {
 			BagOfVisualWords bow = BagOfVisualWords.Load ("bagOfWords");
 
@@ -59,7 +71,7 @@ namespace QueryImage
 
 
 		public static void Index() {
-			string[] files = Directory.GetFiles ("/home/konrad/dev/dms-frontend/img", "*.jpg", SearchOption.AllDirectories);
+			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory+"/img", "*.jpg", SearchOption.AllDirectories);
 			for (int i = 0; i < files.Length; i++) {
 				CreateVectorAndAppendToFile (files [i]);
 			}
@@ -97,7 +109,7 @@ namespace QueryImage
 			string dir = Path.GetDirectoryName (input_file);
 			string[] split = dir.Split ('/');
 
-			using (StreamWriter sw = File.AppendText("bla.txt")) 
+			using (StreamWriter sw = File.AppendText("bow.txt")) 
 			{
 				sw.WriteLine( split[split.Length - 1]+","+Path.GetFileNameWithoutExtension(input_file) + "," + String.Join(",", featureVector));
 			}	
@@ -108,7 +120,7 @@ namespace QueryImage
 		private static void get10bestResultsforVector(double[] compareVector) {
 			List<Tuple<double, string>> results= new List<Tuple<double, string>> ();
 
-			using (StreamReader sr = new StreamReader("bla.txt")) 
+			using (StreamReader sr = new StreamReader("bow.txt")) 
 			{
 				while (sr.Peek() >= 0) 
 				{
