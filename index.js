@@ -30,7 +30,8 @@ app.get('/q/:id', function(req, res, next) {
 
 	exec(`mono text.exe ${req.params.id}`, (error, stdout, stderr) => {
 	  if (error) {
-		res.send(`error ${error}`);
+		console.log(error);
+		res.send(`error`);
 	    return;
 	  }
 		res.send(stdout);
@@ -41,9 +42,12 @@ app.get('/p/:id', function(req, res, next) {
 	//bsp: 163,215,57,19,37,24
 	var vector = getVector(req.params.id);
 
-	exec(`mono BildSuche.exe vector`, (error, stdout, stderr) => {
+	console.log(vector);
+
+	exec(`mono BildSuche.exe ${vector}`, (error, stdout, stderr) => {
 	  if (error) {
-		res.send(`error ${error}`);
+		console.log(error);
+		res.send(`error`);
 	    return;
 	  }
 		res.send(stdout);
