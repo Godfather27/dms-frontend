@@ -158,7 +158,7 @@
     opacity: 0.5;
   }
 
-  header input {
+  header input[type=text] {
     border: none;
     padding: 5px;
     width: 340px;
@@ -333,10 +333,24 @@
     font-weight: 700;
     font-size: 1.5em;
   }
-  
+
  #upload-file-container{
     background-image: url("img/camera.svg");
     height:30px;
     width:30px;
+    background-size:contain;
+    background-repeat:none;
   }
 
+ #choose-file {
+ opacity:0;
+ width:30px;
+ height:30px;
+
+  }
+
+input[type=submit]{
+  background-color:limegreen;
+  border:0;
+  height:25px;
+}

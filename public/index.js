@@ -67,14 +67,15 @@ function search(query) {
     $('#filters').addClass('show');
   }
 
-  $('#uploadForm').on('submit', function() {
+$('#uploadForm').on('submit', function() {
+   if(!$('#choose-file').val()) return false;
     $(this).ajaxSubmit({
-      error: function(xhr) {
-        status('Error: ' + xhr.status);
-      },
-      success: function(response) {
-        console.log("success");
-      }
+        error: function(xhr) {
+            status('Error: ' + xhr.status);
+        },
+        success: function(response) {
+            console.log("success");
+        }
     });
     //Very important line, it disable the page refresh.
     return false;

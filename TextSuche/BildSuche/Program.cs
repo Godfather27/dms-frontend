@@ -28,13 +28,16 @@ namespace QueryImage
 				if (args [0] == "file") {
 					loadImageFromDisk (args [1]);
 				}
+
+				if (args [0] == "bow") {
+					createBoW();
+				}
 			}
 
 			if (args.Length == 1) {
 				praseInputToDouble (args [0]);
 			}
 			//ImageFeatures ();
-			//createBoW();
 			//CreateVectorAndAppendToFile("/home/konrad/Downloads/div-2014/devset/img/acropolis_athens/132872354.jpg");
 			//CreateVectorAndAppendToFile("/home/konrad/Downloads/div-2014/devset/img/acropolis_athens/512080179.jpg");
 			//CreateVectorAndAppendToFile("/home/konrad/Downloads/div-2014/devset/img/acropolis_athens/2064729793.jpg");
@@ -63,8 +66,7 @@ namespace QueryImage
 
 
 		public static void Index() {
-			Console.WriteLine (Directory.GetCurrentDirectory());
-			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() +"/img", "*.jpg", SearchOption.AllDirectories);
+			string[] files = Directory.GetFiles (Directory.GetCurrentDirectory() +"/img/", "*.jpg", SearchOption.AllDirectories);
 			for (int i = 0; i < files.Length; i++) {
 				CreateVectorAndAppendToFile (files [i]);
 			}
